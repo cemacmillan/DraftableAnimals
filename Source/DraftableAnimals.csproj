@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<Authors>Put your name here</Authors>
+		<Authors>CEM</Authors>
+		<!-- previous source authors/editors: Taranchuk.
+		all bugs in this version, responsibility CEM -->
 
-		<!-- <Copyright>Copyright (c) 2023 authorName</Copyright> --> <!-- Optional copyright field -->
-
-		<!-- <Version>1.2.3</Version> --> <!-- Optional. Use this to mark an assembly with a version number of your choice -->
-
+		<Copyright>Copyright (c) 2023 Stardust/Wolfcub05</Copyright>
+		
 		<TargetFramework>net48</TargetFramework> <!-- Rimworld only supports 4.7.2, 4.8 and 4.8.1. 5.x or newer and older versions do not work -->
-
 		<LangVersion>preview</LangVersion> <!-- This is the C# version. Preview is the newest version with the most features -->
 		<!-- Details here: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version -->
 
-		<OutDir>..\Assemblies\</OutDir> <!-- The output path for dll files  -->
+		<!-- <OutDir>..\Assemblies\</OutDir>   -->
+	
+		<OutDir>..\1.5\Assemblies\</OutDir>
 
 		<!-- <Nullable>enable</Nullable> --> <!-- Optional nullable analysis. -->
 		<!-- Details here: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types -->
@@ -22,8 +23,8 @@
 		<Optimize>true</Optimize>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<AnalysisLevel>preview-all</AnalysisLevel>
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>portable</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
 		<ErrorReport>prompt</ErrorReport>
 		<WarningLevel>5</WarningLevel>
 	</PropertyGroup>
@@ -31,12 +32,12 @@
 	<!-- Down here we have references to dependencies -->
 	<ItemGroup>
 		<!-- RimWorld itself -->
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.*"/> <!-- Version="1.4.*" targets the newest stable 1.4 build. -->
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4104" /> <!-- Version="1.4.*" targets the newest stable 1.4 build. -->
 		<!-- To include beta builds, append -* to the version, like this: Version="1.4.*-*" -->
 		<!-- To target a beta version of 1.5, as an example, you'd write this: Version="1.5.*-*" -->
 
 		<!-- Harmony -->
-		<PackageReference Include="Lib.Harmony" Version="2.*" ExcludeAssets="runtime"/>
+		<PackageReference Include="Lib.Harmony" Version="2.*" ExcludeAssets="runtime" />
 		<!-- https://harmony.pardeike.net/articles/intro.html -->
 
 		<!-- Certain newer C# features like records require this optional nuget package -->
@@ -59,4 +60,16 @@
 		<!-- <PackageReference Include="Zetrith.Prepatcher" Version="1.*" /> -->
 		<!-- Details with wiki here: https://github.com/Zetrith/Prepatcher -->
 	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Harmony\" />
+	  <None Remove="compile.txt" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Harmony\" />
+	</ItemGroup>
+	<!--
+	<ItemGroup>
+	  <Compile Remove="Harmony\ChoicesAtForlast.cs" />
+	</ItemGroup>
+	-->
 </Project>
